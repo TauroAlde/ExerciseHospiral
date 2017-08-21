@@ -10,7 +10,13 @@ ActiveAdmin.register AdminUser do
     column :created_at
     actions
   end
-
+  show do
+    attributes_table do
+      row :sign_in_registry do |admin_user|
+        admin_user.sign_in_registries.to_day_login_for(admin_user.id).login_day.strftime("%e/%m/%y %H:%M")
+      end
+    end
+  end
   filter :email
   filter :current_sign_in_at
   filter :sign_in_count
