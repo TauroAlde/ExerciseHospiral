@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class DemaWarehouseTest < ActiveSupport::TestCase
+class WarehousesControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end
