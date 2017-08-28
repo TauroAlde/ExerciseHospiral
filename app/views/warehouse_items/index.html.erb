@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr> 
+      <th>item_name_id</th>
+      <th>quantity</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @warehouse_items.each do |warehouse_item| %>
+  <tr>
+    <td>
+      <%= warehouse_item.item_name_id %>
+    </td>
+    <td>
+      <%= warehouse_item.quantity %>
+    </td>
+    <td>
+      <%= link_to "Editar", edit_warehouse_item_path %>
+      <%= link_to "Borrar", warehouse_item_path, method: :delete %>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
