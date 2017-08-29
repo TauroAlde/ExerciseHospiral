@@ -1,22 +1,26 @@
+<p><%= link_to "return to departments", departments_path %></p>
+<p><%= link_to "return to user", admin_admin_users_path %></p>
 <table>
   <thead>
     <tr> 
-      <th>item_name_id</th>
-      <th>quantity</th>
+      <th>Item Name</th>
+      <th>Quantity Total</th>
     </tr>
+    <br/>
+    <%= link_to "New Warehouse Items", new_warehouse_item_path  %>
   </thead>
   <tbody>
   <% @warehouse_items.each do |warehouse_item| %>
   <tr>
     <td>
-      <%= warehouse_item.item_name_id %>
+      <%= warehouse_item.item_name %>
     </td>
     <td>
-      <%= warehouse_item.quantity %>
+      <%= warehouse_item.quantity_total %>
     </td>
     <td>
-      <%= link_to "Editar", edit_warehouse_item_path %>
-      <%= link_to "Borrar", warehouse_item_path, method: :delete %>
+      <%= link_to "Editar", edit_warehouse_item_path(warehouse_item) %>
+      <%= link_to "Borrar", warehouse_item_path(warehouse_item), method: :delete %>
     </td>
   </tr>
   <% end %>
