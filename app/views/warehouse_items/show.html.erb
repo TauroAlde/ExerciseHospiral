@@ -1,0 +1,10 @@
+<p><%= link_to "Return to Warehouse Item", warehouse_items_path %></p>
+<ul>
+  <li>
+    <%= "Item Name: " + @warehouse_item.item_name %>
+  </li>
+  <li>
+    <th>Quantity:</th>
+    <%= @warehouse_item.quantity_total %>
+  </li>
+</ul>
