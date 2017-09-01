@@ -46,6 +46,7 @@ class WarehouseItemsController < ApplicationController
    end
 
   def misparams
-    params.require(:warehouse_item).permit(:item_name, :quantity_total, warehouse_item_departments_attributes: [:id, :department_id, :warehouse_item_id])
+    binding.pry
+    params.require(:warehouse_item).permit(:item_name, :quantity_total, warehouse_items_departments_attributes: [:id, :department_id, :warehouse_item_id, :quantity])
   end
 end
