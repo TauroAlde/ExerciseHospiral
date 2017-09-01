@@ -13,7 +13,8 @@
     <br/>
     <h3>Departments</h3>
     <div id="warehouse_items_departments">
-      <%= f.fields_for :warehouse_items_department_fields do |warehouse_items_department| %>
+    <% f.object.warehouse_items_departments.build %>
+      <%= f.fields_for :warehouse_items_departments do |warehouse_items_department| %>
         <%= render 'warehouse_items_department_fields', f: warehouse_items_department %>
       <% end %>
       <div class="links">
