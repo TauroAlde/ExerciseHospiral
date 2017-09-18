@@ -1,0 +1,22 @@
+= form_for @warehouse_item do |f|
+  - @warehouse_item.errors.full_messages.each do |msg|
+    %li= msg
+  .field
+    %br/
+    = f.label :item_name
+    %br/
+    = f.text_field :item_name
+    %br/
+    %br/
+    = f.label :quantity_total
+    %br/
+    = f.text_field :quantity_total
+    %br/
+    %br/
+    #warehouse_items_departments
+      = f.fields_for :warehouse_items_department_fields do |warehouse_items_department|
+        = render 'warehouse_items_department_fields', f: warehouse_items_department
+      .links
+        %br/
+        = link_to_add_association 'add warehouse_items_department', f, :warehouse_items_departments
+    = f.submit

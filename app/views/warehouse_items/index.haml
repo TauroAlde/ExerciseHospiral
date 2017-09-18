@@ -1,0 +1,20 @@
+%p= link_to "return to departments", departments_path
+%p= link_to "return to user", admin_admin_users_path
+%p= link_to "return to warehouse items departments", warehouse_items_departments_path
+%table
+  %thead
+    %tr
+      %th Item Name
+      %th Quantity Total
+    %br/
+    = link_to "New Warehouse Items", new_warehouse_item_path
+  %tbody
+    - @warehouse_items.each do |warehouse_item|
+      %tr
+        %td
+          = warehouse_item.item_name
+        %td
+          = warehouse_item.quantity_total
+        %td
+          = link_to "Editar", edit_warehouse_item_path(warehouse_item)
+          = link_to "Borrar", warehouse_item_path(warehouse_item), method: :delete

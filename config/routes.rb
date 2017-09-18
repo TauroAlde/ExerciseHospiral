@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :warehouse_items
   resources :departments
+  resources :warehouse_items_departments
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   devise_for :users
