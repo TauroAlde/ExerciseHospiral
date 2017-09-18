@@ -1,0 +1,23 @@
+%p= link_to "return to departments", departments_path
+%p= link_to "return to user", admin_admin_users_path
+%p= link_to "return to warehouse item", warehouse_items_path
+%table
+  %thead
+    %tr
+      %th Source Department
+      %th Destination Department
+      %th Quantity
+    %br/
+    =binding.pry
+  %tbody
+    - @warehouse_items_departments.each do |warehouse_items_departments|
+      %tr
+        %td
+          = warehouse_items_departments.source_department
+        %td
+          = warehouse_items_departments.destination_department
+        %td
+          = warehouse_items_departments.quantity         
+        %td
+          = link_to "Editar", edit_warehouse_items_departments_path(warehouse_items_departments)
+          = link_to "Borrar", warehouse_items_departments_path(warehouse_items_departments), method: :delete

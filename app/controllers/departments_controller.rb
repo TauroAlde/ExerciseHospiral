@@ -30,23 +30,20 @@ class DepartmentsController < ApplicationController
     end
   end
 
-  def destroy
-    @department = Department.find(params[:id])
-    @department.destroy
-  end
-
   def show
     @department = Department.find(params[:id])
   end
 
   def destroy
-     @department = Department.find(params[:id]);
-     @department.destroy
-     redirect_to departments_path
-   end
+    @department = Department.find(params[:id]);
+    @department.destroy
+    redirect_to departments_path
+  end
 
   def misparams
-     params.require(:department).permit(:department_name, warehouse_item_departments_attributes: [:id, :department_id, :warehouse_item_id, :quantity])
+     params.require(:department).permit(:department_name,
+       warehouse_item_departments_attributes: [:id, :department_id,
+       :warehouse_item_id, :quantity])
   end
 
 end

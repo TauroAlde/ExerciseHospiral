@@ -1,0 +1,8 @@
+%p= link_to "Return to Warehouse Item", warehouse_items_path
+%ul
+  %li
+    = "Item Name: " + @warehouse_item.item_name
+  %li
+    = binding.pry
+    %th Quantity:
+    = @warehouse_item.quantity_total

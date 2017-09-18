@@ -1,0 +1,11 @@
+.nested-fields
+  %div
+    %h3 Sourced Departments
+    = f.select("source_department_id", Department.all.collect {|p| [p.department_name, p.id] }, :prompt => 'Select')
+    %h3 Destinadtion Departments
+    = f.select("destination_department_id", Department.all.collect {|p| [p.department_name, p.id] }, :prompt => 'Select')
+  .field
+    %br/
+    = f.label :quantity
+    %br/
+    = f.text_field :quantity
