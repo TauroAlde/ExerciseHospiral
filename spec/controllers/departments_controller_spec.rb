@@ -29,7 +29,6 @@ describe DepartmentsController do
       put :update, id: @department.id, department: { department_name: "cine"}
       expect(response).to redirect_to(department_path)
     end
-
   end
 
   describe "GET edit" do
