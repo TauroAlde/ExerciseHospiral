@@ -14,7 +14,7 @@ describe DepartmentsController do
     end
     
     it "returns a list of departments" do
-      department = Department.create(department_name: "Computo")
+      department = create(:department)
       get :index
       expect(assigns(:departments)).to include(department)
     end
@@ -22,7 +22,7 @@ describe DepartmentsController do
   
   describe "PUT update" do
     before(:each) do
-      @department = Department.create(department_name: "Computo")
+      @department = create(:department)
     end
 
     it "returns successfull response" do
@@ -33,7 +33,7 @@ describe DepartmentsController do
 
   describe "GET edit" do
     before(:each) do
-      @department = Department.create(department_name: "Computo")
+      @department = create(:department)
     end
 
     it "returns successfull response" do
@@ -56,7 +56,7 @@ describe DepartmentsController do
 
   describe "GET new" do
     it "return a new department" do
-      department = Department.new(id: 1, department_name: "Computo")
+      department = build(:department)
       get :new
       expect(assigns(:department)).to be_a_new(Department)
     end
@@ -85,7 +85,7 @@ describe DepartmentsController do
         expect(assigns(:department)).to be_a(Department)
       end
 
-      it "creates a department" do
+      it "create a department" do
         expect { post :create, department: { department_name: "Computo"} }.
           to change {Department.count}.from(0).to(1)
       end
@@ -108,7 +108,7 @@ describe DepartmentsController do
 
   describe "GET show" do
     before(:each) do
-      @department = Department.create(department_name: "Computo")
+      @department = create(:department)
     end
 
     it "returns successfull response" do
@@ -136,7 +136,7 @@ describe DepartmentsController do
 
   describe "DELETE destroy" do
     before(:each) do
-      @department = Department.create(department_name: "Computo")
+      @department = create(:department)
     end
 
     it "redirects to departments_path" do

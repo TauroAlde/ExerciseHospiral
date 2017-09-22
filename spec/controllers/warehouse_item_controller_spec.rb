@@ -13,7 +13,7 @@ describe WarehouseItemsController do
       end
       
       it "returns a list of warehouse_item" do
-        warehouse_items = WarehouseItem.create(item_name: "navaja", quantity_total: 20)
+        warehouse_items = create(:warehouse_item)
         get :index
         expect(assigns(:warehouse_items)).to include(warehouse_items)
       end
@@ -21,7 +21,7 @@ describe WarehouseItemsController do
 
   describe "PUT update" do
     before(:each) do
-      @warehouse_item = WarehouseItem.create(item_name: "navaja", quantity_total: 20)
+      @warehouse_item = create(:warehouse_item)
     end
 
     it "updates a warehouse_item with valid params" do
@@ -77,7 +77,7 @@ describe WarehouseItemsController do
 
   describe "GET edit" do
     before(:each) do
-      @warehouse_items = WarehouseItem.create(item_name: "navaja", quantity_total: 20)
+      @warehouse_items = create(:warehouse_item)
     end
 
     it "returns successfull response" do
@@ -113,7 +113,7 @@ describe WarehouseItemsController do
 
   describe "GET new" do
     before(:each) do
-      @warehouse_items = WarehouseItem.create(item_name: "navaja", quantity_total: 20)
+      @warehouse_items = create(:warehouse_item)
     end
 
     it "returns successfull response" do
@@ -157,7 +157,7 @@ describe WarehouseItemsController do
 
   describe "GET show" do
     before(:each) do
-      @warehouse_items = WarehouseItem.create(item_name: "navaja", quantity_total: 20)
+      @warehouse_items = create(:warehouse_item)
     end
 
     it "returns successfull response" do
@@ -185,7 +185,7 @@ describe WarehouseItemsController do
 
   describe "DELETE destroy" do
     before(:each) do
-      @warehouse_items = WarehouseItem.create(item_name: "navaja", quantity_total: 20)
+      @warehouse_items = create(:warehouse_item)
     end
 
     it "redirects to warehouse_items_path" do
