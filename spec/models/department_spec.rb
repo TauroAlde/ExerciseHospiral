@@ -45,6 +45,5 @@ RSpec.describe Department, type: :model do
 
   describe "accept_nested_attributes_for" do
     it { should accept_nested_attributes_for(:warehouse_items_departments) }
-    it { should accept_nested_attributes_for(:warehouse_items_departments).reject_if(:all_blank) }
   end
 end

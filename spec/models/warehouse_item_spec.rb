@@ -21,7 +21,7 @@ RSpec.describe WarehouseItem, type: :model do
     end
 
     it "expect warehouse_items quantity_total be integer" do
-      expect(@warehouse_items.quantity_total).to be_integer
+      expect(build(:warehouse_item).quantity_total).to be_integer
     end
   end
 
@@ -35,5 +35,9 @@ RSpec.describe WarehouseItem, type: :model do
       assc = described_class.reflect_on_association(:warehouse_items_departments)
       expect(assc.macro).to eq :has_many
     end
+  end
+
+  describe "accept_nested_attributes_for" do
+    it { should accept_nested_attributes_for(:warehouse_items_departments) }
   end
 end
