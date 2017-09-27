@@ -27,6 +27,8 @@ gem 'pry'
 
 gem 'factory_girl'
 
+gem 'shoulda-matchers', '~> 3.1'
+
 gem 'activeadmin'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
