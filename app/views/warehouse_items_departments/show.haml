@@ -1,0 +1,14 @@
+%p= link_to "Return to Warehouse Items Departments", warehouse_items_departments_path
+%ul
+  %li
+    %th Name:
+    = @warehouse_items_departments.admin_user.admin_user_full_name
+  %li
+    %th Sourced Departments:
+    = @warehouse_items_departments.source_department.department_name
+  %li
+    %th Destination Departments:
+    = @warehouse_items_departments.destination_department.department_name
+  %li
+    %th Quantity:
+    = @warehouse_items_departments.quantity 

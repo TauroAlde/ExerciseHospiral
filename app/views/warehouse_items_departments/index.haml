@@ -7,17 +7,20 @@
       %th Source Department
       %th Destination Department
       %th Quantity
-    %br/
-    =binding.pry
+      %br/
+      = link_to "New transfer", new_warehouse_items_department_path
   %tbody
     - @warehouse_items_departments.each do |warehouse_items_departments|
       %tr
         %td
-          = warehouse_items_departments.source_department
+          = warehouse_items_departments.admin_user.admin_user_full_name
         %td
-          = warehouse_items_departments.destination_department
+          = warehouse_items_departments.source_department.department_name
+        %td
+          = warehouse_items_departments.destination_department.department_name
         %td
           = warehouse_items_departments.quantity         
         %td
-          = link_to "Editar", edit_warehouse_items_departments_path(warehouse_items_departments)
+          = link_to "Editar", edit_warehouse_items_department_path(warehouse_items_departments)
+
           = link_to "Borrar", warehouse_items_departments_path(warehouse_items_departments), method: :delete

@@ -14,7 +14,8 @@ class Provider < ActiveRecord::Base
   scope :active, -> { where(active: true) }# el scope debe buscar los que tengan active: true
  
   def set_name
-    if Provider.where(name: self.name).count > 0
+
+    while Provider.where(name: self.name).count > 0 do
       self.name = "#{self.name}_1"
     end
     # hagan que busque los que tengan el mismo nombre que se intenta guardar
@@ -27,7 +28,7 @@ class Provider < ActiveRecord::Base
   def self.find_by_product_prioritized(item_id)
     #WarehouseItem.find(item_id).providers.where(priority: 0)
     self.joins(warehouse_item_providers: :warehouse_item).
-      where("providers.priority = 0")
+      where("warehouse_items.id = #{item_id}").order(priority: :asc)
     # este metodo va a cargar un proveedor bajo las condiciones:
     # debe estar relacionado con el id del producto que se esta pasando
     # en el argumento y debe cargar basado en la prioridad del campo
