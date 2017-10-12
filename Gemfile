@@ -27,7 +27,9 @@ gem 'pry'
 
 gem 'factory_girl'
 
-gem 'shoulda-matchers', '~> 3.1'
+gem 'shoulda-matchers', '~> 3.1'  #nested attreibbut
+
+gem 'shoulda-callback-matchers', '~> 1.1.1' #callbacks
 
 gem 'activeadmin'
 # Use ActiveModel has_secure_password
