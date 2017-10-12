@@ -6,4 +6,7 @@ class  WarehouseItem < ActiveRecord::Base
   has_many :warehouse_item_providers
   has_many :warehouse_items_departments
   accepts_nested_attributes_for :warehouse_items_departments
+
+  scope :item_name, -> { joins(warehouse_item_providers: :provider) }
+
 end

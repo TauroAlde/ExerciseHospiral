@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170821200551) do
+ActiveRecord::Schema.define(version: 20171012190432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,24 +44,26 @@ ActiveRecord::Schema.define(version: 20170821200551) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "admin_user_full_name"
+    t.integer  "department_id"
   end
 
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true, using: :btree
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true, using: :btree
 
-  create_table "dema_warehouses", force: :cascade do |t|
-    t.string   "item_name"
-    t.string   "department_belongs"
-    t.integer  "quantity"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-  end
-
   create_table "departments", force: :cascade do |t|
     t.string   "department_name"
-    t.integer  "quantity"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.boolean  "active"
+    t.text     "address"
+    t.string   "name"
+    t.integer  "priority"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "sign_in_registries", force: :cascade do |t|
@@ -71,33 +73,28 @@ ActiveRecord::Schema.define(version: 20170821200551) do
     t.datetime "updated_at",    null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.boolean  "admin"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
+  create_table "warehouse_item_providers", force: :cascade do |t|
+    t.integer  "provider_id"
+    t.integer  "warehouse_item_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "warehouse_items", force: :cascade do |t|
     t.string   "item_name"
-    t.string   "where_are_go"
+    t.integer  "quantity_total"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "warehouse_items_departments", force: :cascade do |t|
+    t.integer  "warehouse_item_id"
+    t.integer  "source_department_id"
     t.integer  "quantity"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "destination_department_id"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "admin_user_id"
   end
 
 end

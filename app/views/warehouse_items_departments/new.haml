@@ -1,4 +1,7 @@
-.nested-fields
+= form_for @warehouse_items_departments do |f|
+  - @warehouse_items_departments.errors.full_messages.each do |msg|
+    %li= msg
+  %h1 Transfers
   %div
     %h3 Sourced Departments
     = f.select("source_department_id", Department.all.collect {|p| [p.department_name, p.id] }, :prompt => 'Select')
@@ -6,6 +9,12 @@
     = f.select("destination_department_id", Department.all.collect {|p| [p.department_name, p.id] }, :prompt =>'Select')
   .field
     %br/
+    = f.label :admin_user_id
+    = f.hidden_field :admin_user_id, value: current_admin_user.id
+    = current_admin_user.admin_user_full_name
+    %br/
     = f.label :quantity
     %br/
     = f.text_field :quantity
+    %br/
+    = f.submit
