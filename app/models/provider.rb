@@ -14,8 +14,7 @@ class Provider < ActiveRecord::Base
   scope :active, -> { where(active: true) }# el scope debe buscar los que tengan active: true
  
   def set_name
-
-    while Provider.where(name: self.name).count > 0 do
+    while !Provider.where(name: self.name).blank? do
       self.name = "#{self.name}_1"
     end
     # hagan que busque los que tengan el mismo nombre que se intenta guardar
